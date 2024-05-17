@@ -1247,9 +1247,12 @@ void ideal_to_isogeny_small_two_f(two_walk *phi, uintbig *res, eichler_package *
 
       #endif
 
-      uintbig big_res;
-      uintbig_set(&big_res,pow(2,two_tors_height));
-      uintbig_sub3(&res_temp,&big_res,&res_temp);
+    //   uintbig big_res;
+    //   uintbig_set(&big_res,pow(2,two_tors_height));
+    //   uintbig_sub3(&res_temp,&big_res,&res_temp);
+      GEN dlp_res = bigtogen(&res_temp);
+      dlp_res = gmod(gneg(dlp_res),twof);
+      gentobig(&res_temp,dlp_res);
       *res = res_temp;
       xBIDIM(&(phi->ker), &phi->A, &P, &res_temp, &Q, &uintbig_1, &PQ);
 

@@ -54,9 +54,10 @@ int main(int argc, char *argv[]){
       init_compressed_sig(&comp_sigma);
       // signature Sigma;
 
-
+      printf("Signature \n");
       sign_new(&comp_sigma ,&sk, &pk, &m);
 
+      printf("Verification \n");
       assert(verif_new(&comp_sigma,&pk,&m));
 
       uintbig_random(&m);
